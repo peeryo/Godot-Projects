@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtg0jfus0165"]
+[gd_scene load_steps=12 format=3 uid="uid://dtg0jfus0165"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_s0o17"]
+[ext_resource type="Texture2D" uid="uid://bx7dp1s6kje2" path="res://icon.svg" id="1_ysrd1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g3f02"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -14,6 +15,9 @@ background_mode = 2
 sky = SubResource("Sky_jdh8m")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhpw7"]
+albedo_texture = ExtResource("1_ysrd1")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hywff"]
 size = Vector2(20, 20)
@@ -44,6 +48,7 @@ shadow_enabled = true
 environment = SubResource("Environment_dc8hx")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_qhpw7")
 mesh = SubResource("PlaneMesh_hywff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
