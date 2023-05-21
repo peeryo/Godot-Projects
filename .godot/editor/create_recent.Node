@@ -1,5 +1,6 @@
-Camera3D
-Marker3D
 MeshInstance3D
 CollisionShape3D
+RigidBody3D
+Camera3D
+Marker3D
 CharacterBody3D
