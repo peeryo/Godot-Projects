@@ -1,7 +1,7 @@
 2a60927148abd1d33b818b535e306557
-::res://::1684678190
+::res://::1684679068
 icon.svg::CompressedTexture2D::119618662006483399::1683384620::1684678309::1::::<><>::
-main_scene.tscn::PackedScene::250199136413403724::1684678190::0::1::::<><>::res://Player.gd
+main_scene.tscn::PackedScene::250199136413403724::1684678997::0::1::::<><>::res://Player.gd<>uid://bx7dp1s6kje2
 Player.gd::GDScript::-1::1684677207::0::1::::<>CharacterBody3D<>::
 README.md::TextFile::-1::1684677976::0::1::::<><>::
 ::res://addons/::1684677739
