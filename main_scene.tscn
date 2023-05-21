@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtg0jfus0165"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_s0o17"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g3f02"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jdh8m"]
+sky_material = SubResource("ProceduralSkyMaterial_g3f02")
+
+[sub_resource type="Environment" id="Environment_dc8hx"]
+background_mode = 2
+sky = SubResource("Sky_jdh8m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hywff"]
+size = Vector2(20, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6dbx2"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o7plp"]
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vv8a6"]
+radius = 0.228952
+height = 0.99797
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rdt2b"]
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.3
+
+[node name="MainScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dc8hx")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_hywff")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6dbx2")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_s0o17")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_o7plp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00541508, 0.508061, 0.0127121)
+shape = SubResource("CapsuleShape3D_vv8a6")
+
+[node name="Nose" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.0297572, 0.680576, -0.323516)
+mesh = SubResource("CylinderMesh_rdt2b")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.967634, 0.252356, 0, -0.252356, 0.967634, -0.543241, 2.57593, 3.2125)

@@ -1,0 +1,5 @@
+2a60927148abd1d33b818b535e306557
+::res://::1684674849
+icon.svg::CompressedTexture2D::119618662006483399::1683384620::1683384628::1::::<><>::
+main_scene.tscn::PackedScene::250199136413403724::1684674734::0::1::::<><>::res://Player.gd
+Player.gd::GDScript::-1::1684635203::0::1::::<>CharacterBody3D<>::
