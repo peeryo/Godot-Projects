@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtg0jfus0165"]
+[gd_scene load_steps=14 format=3 uid="uid://dtg0jfus0165"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_s0o17"]
 [ext_resource type="Texture2D" uid="uid://bx7dp1s6kje2" path="res://icon.svg" id="1_ysrd1"]
@@ -38,6 +38,11 @@ top_radius = 0.1
 bottom_radius = 0.2
 height = 0.3
 
+[sub_resource type="BoxMesh" id="BoxMesh_k8cqh"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o44ul"]
+
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -75,3 +80,12 @@ mesh = SubResource("CylinderMesh_rdt2b")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.967634, 0.252356, 0, -0.252356, 0.967634, -0.136458, 1.71166, 4.87556)
+
+[node name="CubeObstacle" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.58072)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CubeObstacle"]
+mesh = SubResource("BoxMesh_k8cqh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubeObstacle"]
+shape = SubResource("BoxShape3D_o44ul")
